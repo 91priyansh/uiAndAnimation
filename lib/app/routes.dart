@@ -6,9 +6,11 @@ import 'package:ui_animations/ui/screens/customPainerScreen.dart';
 import 'package:ui_animations/ui/screens/gridViewsScreen.dart';
 import 'package:ui_animations/ui/screens/hideShowAppbar.dart';
 import 'package:ui_animations/ui/screens/homeScreen.dart';
+import 'package:ui_animations/ui/screens/neumorphismScreen.dart';
 import 'package:ui_animations/ui/screens/numberAnimation.dart';
 import 'package:ui_animations/ui/screens/overlayScreen.dart';
 import 'package:ui_animations/ui/screens/scrollAnimation.dart';
+import 'package:ui_animations/ui/screens/selectProfilePictureScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverAppbarScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverScreen.dart';
 
@@ -25,6 +27,8 @@ class Routes {
 
   static const String numberAnimation = "/numberanimation";
   static const String contactAnimation = "/contactanimation";
+  static const String neumorphism = "/neumorphismScreen";
+  static const String selectProfileAnimation = "/selectProfileAnimation";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -50,6 +54,11 @@ class Routes {
         return CupertinoPageRoute(builder: (context) => NumberAnimation());
       case contactAnimation:
         return CupertinoPageRoute(builder: (_) => ContactAnimationScreen());
+      case neumorphism:
+        return CupertinoPageRoute(builder: (_) => NeumorphismScreen());
+      case selectProfileAnimation:
+        return CupertinoPageRoute(builder: (_) => SelectProfilePictureScreen());
+
       default:
         return CupertinoPageRoute(builder: (context) => HomeScreen());
     }
