@@ -21,7 +21,8 @@ class _HomeScreenState extends State<HomeScreen> {
     "NumberAnimation",
     "ContactAnimation",
     "Neumorphism",
-    "SelectProfileAnimation"
+    "SelectProfileAnimation",
+    "MenuAnimation"
   ];
   @override
   Widget build(BuildContext context) {
@@ -53,6 +54,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.neumorphism);
               } else if (examples[index] == "SelectProfileAnimation") {
                 Navigator.of(context).pushNamed(Routes.selectProfileAnimation);
+              } else if (examples[index] == "MenuAnimation") {
+                Navigator.of(context).pushNamed(Routes.menuAnimation);
               }
             },
             title: Text(examples[index]),

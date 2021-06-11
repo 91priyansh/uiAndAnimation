@@ -6,6 +6,7 @@ import 'package:ui_animations/ui/screens/customPainerScreen.dart';
 import 'package:ui_animations/ui/screens/gridViewsScreen.dart';
 import 'package:ui_animations/ui/screens/hideShowAppbar.dart';
 import 'package:ui_animations/ui/screens/homeScreen.dart';
+import 'package:ui_animations/ui/screens/menuAnimation.dart';
 import 'package:ui_animations/ui/screens/neumorphismScreen.dart';
 import 'package:ui_animations/ui/screens/numberAnimation.dart';
 import 'package:ui_animations/ui/screens/overlayScreen.dart';
@@ -29,6 +30,7 @@ class Routes {
   static const String contactAnimation = "/contactanimation";
   static const String neumorphism = "/neumorphismScreen";
   static const String selectProfileAnimation = "/selectProfileAnimation";
+  static const String menuAnimation = "/menuAnimation";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -58,6 +60,8 @@ class Routes {
         return CupertinoPageRoute(builder: (_) => NeumorphismScreen());
       case selectProfileAnimation:
         return CupertinoPageRoute(builder: (_) => SelectProfilePictureScreen());
+      case menuAnimation:
+        return CupertinoPageRoute(builder: (_) => MenuAnimaiton());
 
       default:
         return CupertinoPageRoute(builder: (context) => HomeScreen());

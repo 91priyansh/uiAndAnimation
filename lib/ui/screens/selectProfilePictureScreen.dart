@@ -21,7 +21,7 @@ class _SelectProfilePictureScreenState
   ];
 
   late ScrollController scrollController = ScrollController();
-  late PageController pageController = PageController(viewportFraction: 0.5);
+  late PageController pageController = PageController(viewportFraction: 0.45);
 
   int currentIndex = 0;
 
@@ -44,25 +44,33 @@ class _SelectProfilePictureScreenState
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SizedBox(
-            height: 300.0,
-            child: PageView.builder(
-              onPageChanged: (index) {
-                setState(() {
-                  currentIndex = index;
-                });
-                print(currentIndex);
-              },
-              physics: BouncingScrollPhysics(),
-              controller: pageController,
-              itemBuilder: (context, index) {
-                return PageViewChild(
-                    currentIndex: currentIndex,
-                    index: index,
-                    color: colors[index]);
-              },
-              itemCount: colors.length,
-            ),
+          Stack(
+            children: [
+              SizedBox(
+                height: 300.0,
+                child: PageView.builder(
+                  onPageChanged: (index) {
+                    setState(() {
+                      currentIndex = index;
+                    });
+                    print(currentIndex);
+                  },
+                  physics: BouncingScrollPhysics(),
+                  controller: pageController,
+                  itemBuilder: (context, index) {
+                    return PageViewChild(
+                        currentIndex: currentIndex,
+                        index: index,
+                        color: colors[index]);
+                  },
+                  itemCount: colors.length,
+                ),
+              ),
+              Container(
+                height: 300,
+                color: Colors.transparent,
+              )
+            ],
           ),
           SizedBox(
             height: 150.0,
@@ -75,12 +83,19 @@ class _SelectProfilePictureScreenState
                 scrollDirection: Axis.horizontal,
                 itemCount: colors.length,
                 itemBuilder: (context, index) {
-                  return Container(
-                    decoration: BoxDecoration(
-                        color: colors[index], shape: BoxShape.circle),
-                    height: 100.0,
-                    width: 100.0,
-                    margin: EdgeInsets.symmetric(horizontal: 15.0),
+                  return GestureDetector(
+                    onTap: () {
+                      pageController.animateToPage(index,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.easeInBack);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                          color: colors[index], shape: BoxShape.circle),
+                      height: 100.0,
+                      width: 100.0,
+                      margin: EdgeInsets.symmetric(horizontal: 15.0),
+                    ),
                   );
                 }),
           )
@@ -114,13 +129,19 @@ class _PageViewChildState extends State<PageViewChild>
           parent: animationController, curve: Curves.easeInOutSine));
   late Animation<double> scaleAnimation = Tween<double>(begin: 0.75, end: 1.0)
       .animate(CurvedAnimation(
-          parent: animationController, curve: Curves.easeInOutQuad));
+          parent: animationController, curve: Curves.easeInOut));
   @override
   void initState() {
     super.initState();
     if (widget.index == widget.currentIndex) {
       animationController.forward();
     }
+  }
+
+  @override
+  void dispose() {
+    animationController.dispose();
+    super.dispose();
   }
 
   @override
