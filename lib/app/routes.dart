@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_animations/ui/screens/clipperScreen.dart';
 import 'package:ui_animations/ui/screens/contactAnimationScreen.dart';
+import 'package:ui_animations/ui/screens/curvesScreen.dart';
 import 'package:ui_animations/ui/screens/customPainerScreen.dart';
 import 'package:ui_animations/ui/screens/gridViewsScreen.dart';
 import 'package:ui_animations/ui/screens/hideShowAppbar.dart';
 import 'package:ui_animations/ui/screens/homeScreen.dart';
+import 'package:ui_animations/ui/screens/inkEffectScreen.dart';
 import 'package:ui_animations/ui/screens/menuAnimation.dart';
 import 'package:ui_animations/ui/screens/neumorphismScreen.dart';
 import 'package:ui_animations/ui/screens/numberAnimation.dart';
@@ -31,6 +33,8 @@ class Routes {
   static const String neumorphism = "/neumorphismScreen";
   static const String selectProfileAnimation = "/selectProfileAnimation";
   static const String menuAnimation = "/menuAnimation";
+  static const String curves = "/curves";
+  static const String inkEffect = "/inkEffect";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -62,7 +66,10 @@ class Routes {
         return CupertinoPageRoute(builder: (_) => SelectProfilePictureScreen());
       case menuAnimation:
         return CupertinoPageRoute(builder: (_) => MenuAnimaiton());
-
+      case curves:
+        return CupertinoPageRoute(builder: (_) => CurvesScreen());
+      case inkEffect:
+        return InkEffectScreen.route(routeSettings);
       default:
         return CupertinoPageRoute(builder: (context) => HomeScreen());
     }

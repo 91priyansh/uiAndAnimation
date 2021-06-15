@@ -22,7 +22,9 @@ class _HomeScreenState extends State<HomeScreen> {
     "ContactAnimation",
     "Neumorphism",
     "SelectProfileAnimation",
-    "MenuAnimation"
+    "MenuAnimation",
+    "Curves",
+    "InkEffect"
   ];
   @override
   Widget build(BuildContext context) {
@@ -56,6 +58,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.selectProfileAnimation);
               } else if (examples[index] == "MenuAnimation") {
                 Navigator.of(context).pushNamed(Routes.menuAnimation);
+              } else if (examples[index] == "Curves") {
+                Navigator.of(context).pushNamed(Routes.curves);
+              } //
+              else if (examples[index] == "InkEffect") {
+                Navigator.of(context).pushNamed(Routes.inkEffect);
               }
             },
             title: Text(examples[index]),
