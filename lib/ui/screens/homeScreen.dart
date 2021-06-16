@@ -24,7 +24,8 @@ class _HomeScreenState extends State<HomeScreen> {
     "SelectProfileAnimation",
     "MenuAnimation",
     "Curves",
-    "InkEffect"
+    "InkEffect",
+    "SubCategoryAndLevelAnimation"
   ];
   @override
   Widget build(BuildContext context) {
@@ -63,6 +64,9 @@ class _HomeScreenState extends State<HomeScreen> {
               } //
               else if (examples[index] == "InkEffect") {
                 Navigator.of(context).pushNamed(Routes.inkEffect);
+              } else if (examples[index] == "SubCategoryAndLevelAnimation") {
+                Navigator.of(context)
+                    .pushNamed(Routes.subCategoryAndLevelAnimation);
               }
             },
             title: Text(examples[index]),

@@ -16,6 +16,7 @@ import 'package:ui_animations/ui/screens/scrollAnimation.dart';
 import 'package:ui_animations/ui/screens/selectProfilePictureScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverAppbarScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverScreen.dart';
+import 'package:ui_animations/ui/screens/subcategoryAndLevelAnimation.dart';
 
 class Routes {
   static const String home = "/";
@@ -35,6 +36,8 @@ class Routes {
   static const String menuAnimation = "/menuAnimation";
   static const String curves = "/curves";
   static const String inkEffect = "/inkEffect";
+  static const String subCategoryAndLevelAnimation =
+      "/subCategoryAndLevelAnimation";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -70,6 +73,9 @@ class Routes {
         return CupertinoPageRoute(builder: (_) => CurvesScreen());
       case inkEffect:
         return InkEffectScreen.route(routeSettings);
+      case subCategoryAndLevelAnimation:
+        return CupertinoPageRoute(
+            builder: (context) => SubCategoryAndLevelAnimation());
       default:
         return CupertinoPageRoute(builder: (context) => HomeScreen());
     }
