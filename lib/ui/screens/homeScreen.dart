@@ -25,7 +25,15 @@ class _HomeScreenState extends State<HomeScreen> {
     "MenuAnimation",
     "Curves",
     "InkEffect",
-    "SubCategoryAndLevelAnimation"
+    "SubCategoryAndLevelAnimation",
+    "Transform",
+    "ImageSlider",
+    "ImmersiveAnimation",
+    "PageViewSideMenu",
+    "ChessAnimation",
+    "ImageSequenceAnimation",
+    "TextSlideAnimation",
+    "LoadingShapeAnimation"
   ];
   @override
   Widget build(BuildContext context) {
@@ -67,6 +75,22 @@ class _HomeScreenState extends State<HomeScreen> {
               } else if (examples[index] == "SubCategoryAndLevelAnimation") {
                 Navigator.of(context)
                     .pushNamed(Routes.subCategoryAndLevelAnimation);
+              } else if (examples[index] == "Transform") {
+                Navigator.of(context).pushNamed(Routes.transform);
+              } else if (examples[index] == "ImageSlider") {
+                Navigator.of(context).pushNamed(Routes.imageSlider);
+              } else if (examples[index] == "ImmersiveAnimation") {
+                Navigator.of(context).pushNamed(Routes.immersiveAnimation);
+              } else if (examples[index] == "PageViewSideMenu") {
+                Navigator.of(context).pushNamed(Routes.pageViewSideMenu);
+              } else if (examples[index] == "ChessAnimation") {
+                Navigator.of(context).pushNamed(Routes.chessAnimation);
+              } else if (examples[index] == "ImageSequenceAnimation") {
+                Navigator.of(context).pushNamed(Routes.imageSequenceAnimation);
+              } else if (examples[index] == "TextSlideAnimation") {
+                Navigator.of(context).pushNamed(Routes.textSlideAnimation);
+              } else if (examples[index] == "LoadingShapeAnimation") {
+                Navigator.of(context).pushNamed(Routes.loadingShapeAnimation);
               }
             },
             title: Text(examples[index]),

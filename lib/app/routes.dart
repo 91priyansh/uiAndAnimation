@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_animations/ui/screens/chessAnimation.dart';
 import 'package:ui_animations/ui/screens/clipperScreen.dart';
 import 'package:ui_animations/ui/screens/contactAnimationScreen.dart';
 import 'package:ui_animations/ui/screens/curvesScreen.dart';
@@ -7,16 +8,23 @@ import 'package:ui_animations/ui/screens/customPainerScreen.dart';
 import 'package:ui_animations/ui/screens/gridViewsScreen.dart';
 import 'package:ui_animations/ui/screens/hideShowAppbar.dart';
 import 'package:ui_animations/ui/screens/homeScreen.dart';
+import 'package:ui_animations/ui/screens/imageSequenceAnimation.dart';
+import 'package:ui_animations/ui/screens/imageSliderScreen.dart';
+import 'package:ui_animations/ui/screens/immersiveAnimation.dart';
 import 'package:ui_animations/ui/screens/inkEffectScreen.dart';
+import 'package:ui_animations/ui/screens/loadingShapeAnimation.dart';
 import 'package:ui_animations/ui/screens/menuAnimation.dart';
 import 'package:ui_animations/ui/screens/neumorphismScreen.dart';
 import 'package:ui_animations/ui/screens/numberAnimation.dart';
 import 'package:ui_animations/ui/screens/overlayScreen.dart';
+import 'package:ui_animations/ui/screens/pageViewSideMenuScreen.dart';
 import 'package:ui_animations/ui/screens/scrollAnimation.dart';
 import 'package:ui_animations/ui/screens/selectProfilePictureScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverAppbarScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverScreen.dart';
 import 'package:ui_animations/ui/screens/subcategoryAndLevelAnimation.dart';
+import 'package:ui_animations/ui/screens/textSlideAnimation.dart';
+import 'package:ui_animations/ui/screens/transformScreen.dart';
 
 class Routes {
   static const String home = "/";
@@ -38,6 +46,22 @@ class Routes {
   static const String inkEffect = "/inkEffect";
   static const String subCategoryAndLevelAnimation =
       "/subCategoryAndLevelAnimation";
+
+  static const String transform = "/transform";
+
+  static const String imageSlider = "/imageSlider";
+
+  static const String immersiveAnimation = "/immersiveAnimation";
+
+  static const String pageViewSideMenu = "/pageViewSideMenu";
+
+  static const String chessAnimation = "/chessAnimation";
+
+  static const String imageSequenceAnimation = "/imageSequenceAnimation";
+
+  static const String textSlideAnimation = "/textSlideAnimation";
+
+  static const String loadingShapeAnimation = "/loadingShapeAnimation";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -76,8 +100,33 @@ class Routes {
       case subCategoryAndLevelAnimation:
         return CupertinoPageRoute(
             builder: (context) => SubCategoryAndLevelAnimation());
+      case transform:
+        return CupertinoPageRoute(builder: (context) => TransformScreen());
+      case imageSlider:
+        return CupertinoPageRoute(builder: (context) => ImageSliderScreen());
+
+      case immersiveAnimation:
+        return CupertinoPageRoute(builder: (context) => ImmersiveAnimation());
+
+      case pageViewSideMenu:
+        return CupertinoPageRoute(
+            builder: (context) => PageViewSideMenuScreen());
+
+      case chessAnimation:
+        return CupertinoPageRoute(builder: (context) => ChessAnimationScreen());
+
+      case imageSequenceAnimation:
+        return CupertinoPageRoute(
+            builder: (context) => ImageSequenceAnimationScreen());
+      case textSlideAnimation:
+        return CupertinoPageRoute(builder: (context) => TextSlideAnimation());
+      case loadingShapeAnimation:
+        return CupertinoPageRoute(
+            builder: (context) => LoadingShapeAnimation());
+
       default:
-        return CupertinoPageRoute(builder: (context) => HomeScreen());
+        return CupertinoPageRoute(
+            builder: (context) => LoadingShapeAnimation());
     }
   }
 }
