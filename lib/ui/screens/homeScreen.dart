@@ -33,7 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
     "ChessAnimation",
     "ImageSequenceAnimation",
     "TextSlideAnimation",
-    "LoadingShapeAnimation"
+    "LoadingShapeAnimation",
+    "AnimatedExpandableMenu"
   ];
   @override
   Widget build(BuildContext context) {
@@ -91,6 +92,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.textSlideAnimation);
               } else if (examples[index] == "LoadingShapeAnimation") {
                 Navigator.of(context).pushNamed(Routes.loadingShapeAnimation);
+              } else if (examples[index] == "AnimatedExpandableMenu") {
+                Navigator.of(context).pushNamed(Routes.animatedExpandableMenu);
               }
             },
             title: Text(examples[index]),

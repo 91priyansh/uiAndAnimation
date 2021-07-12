@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_animations/ui/screens/animatedExpandableMenu.dart';
 import 'package:ui_animations/ui/screens/chessAnimation.dart';
 import 'package:ui_animations/ui/screens/clipperScreen.dart';
 import 'package:ui_animations/ui/screens/contactAnimationScreen.dart';
@@ -63,6 +64,8 @@ class Routes {
 
   static const String loadingShapeAnimation = "/loadingShapeAnimation";
 
+  static const String animatedExpandableMenu = "/animatedExpandableMenu";
+
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case home:
@@ -123,6 +126,9 @@ class Routes {
       case loadingShapeAnimation:
         return CupertinoPageRoute(
             builder: (context) => LoadingShapeAnimation());
+      case animatedExpandableMenu:
+        return CupertinoPageRoute(
+            builder: (context) => AnimatedExpandableMenu());
 
       default:
         return CupertinoPageRoute(
