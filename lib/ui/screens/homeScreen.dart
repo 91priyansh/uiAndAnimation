@@ -34,7 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
     "ImageSequenceAnimation",
     "TextSlideAnimation",
     "LoadingShapeAnimation",
-    "AnimatedExpandableMenu"
+    "AnimatedExpandableMenu",
+    "CarRentalUx",
+    "QuizPlayArea"
   ];
   @override
   Widget build(BuildContext context) {
@@ -94,6 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.loadingShapeAnimation);
               } else if (examples[index] == "AnimatedExpandableMenu") {
                 Navigator.of(context).pushNamed(Routes.animatedExpandableMenu);
+              } else if (examples[index] == "CarRentalUx") {
+                Navigator.of(context).pushNamed(Routes.carRentalUx);
+              } else if (examples[index] == "QuizPlayArea") {
+                Navigator.of(context).pushNamed(Routes.quiaPlayArea);
               }
             },
             title: Text(examples[index]),

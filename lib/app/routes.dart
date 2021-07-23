@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_animations/ui/screens/animatedExpandableMenu.dart';
+import 'package:ui_animations/ui/screens/carRentalUx.dart';
 import 'package:ui_animations/ui/screens/chessAnimation.dart';
 import 'package:ui_animations/ui/screens/clipperScreen.dart';
 import 'package:ui_animations/ui/screens/contactAnimationScreen.dart';
@@ -19,6 +20,7 @@ import 'package:ui_animations/ui/screens/neumorphismScreen.dart';
 import 'package:ui_animations/ui/screens/numberAnimation.dart';
 import 'package:ui_animations/ui/screens/overlayScreen.dart';
 import 'package:ui_animations/ui/screens/pageViewSideMenuScreen.dart';
+import 'package:ui_animations/ui/screens/quizPlayAreaScreen.dart';
 import 'package:ui_animations/ui/screens/scrollAnimation.dart';
 import 'package:ui_animations/ui/screens/selectProfilePictureScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverAppbarScreen.dart';
@@ -65,6 +67,10 @@ class Routes {
   static const String loadingShapeAnimation = "/loadingShapeAnimation";
 
   static const String animatedExpandableMenu = "/animatedExpandableMenu";
+
+  static const String carRentalUx = "/carRentalUx";
+
+  static const String quiaPlayArea = "/quizPlayArea";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -129,6 +135,12 @@ class Routes {
       case animatedExpandableMenu:
         return CupertinoPageRoute(
             builder: (context) => AnimatedExpandableMenu());
+
+      case carRentalUx:
+        return CupertinoPageRoute(builder: (context) => CarRental());
+
+      case quiaPlayArea:
+        return CupertinoPageRoute(builder: (context) => QuizPlayAreaScreen());
 
       default:
         return CupertinoPageRoute(
