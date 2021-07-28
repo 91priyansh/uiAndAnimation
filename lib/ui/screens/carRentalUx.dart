@@ -11,6 +11,7 @@ class CarRental extends StatefulWidget {
 }
 
 class _CarRentalState extends State<CarRental> with TickerProviderStateMixin {
+  //to animate
   late AnimationController _animationController = AnimationController(
       vsync: this, duration: Duration(milliseconds: 1550)); //1150
 

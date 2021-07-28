@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ui_animations/ui/screens/CollidingCirclesAnimationScreen.dart';
 import 'package:ui_animations/ui/screens/animatedExpandableMenu.dart';
 import 'package:ui_animations/ui/screens/carRentalUx.dart';
 import 'package:ui_animations/ui/screens/chessAnimation.dart';
@@ -15,6 +16,7 @@ import 'package:ui_animations/ui/screens/imageSliderScreen.dart';
 import 'package:ui_animations/ui/screens/immersiveAnimation.dart';
 import 'package:ui_animations/ui/screens/inkEffectScreen.dart';
 import 'package:ui_animations/ui/screens/loadingShapeAnimation.dart';
+import 'package:ui_animations/ui/screens/mapImageAnimationScreen.dart';
 import 'package:ui_animations/ui/screens/menuAnimation.dart';
 import 'package:ui_animations/ui/screens/neumorphismScreen.dart';
 import 'package:ui_animations/ui/screens/numberAnimation.dart';
@@ -23,9 +25,11 @@ import 'package:ui_animations/ui/screens/pageViewSideMenuScreen.dart';
 import 'package:ui_animations/ui/screens/quizPlayAreaScreen.dart';
 import 'package:ui_animations/ui/screens/scrollAnimation.dart';
 import 'package:ui_animations/ui/screens/selectProfilePictureScreen.dart';
+import 'package:ui_animations/ui/screens/selectWordAnimation.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverAppbarScreen.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverScreen.dart';
 import 'package:ui_animations/ui/screens/subcategoryAndLevelAnimation.dart';
+import 'package:ui_animations/ui/screens/tapAnimationScreen.dart';
 import 'package:ui_animations/ui/screens/textSlideAnimation.dart';
 import 'package:ui_animations/ui/screens/transformScreen.dart';
 
@@ -71,6 +75,14 @@ class Routes {
   static const String carRentalUx = "/carRentalUx";
 
   static const String quiaPlayArea = "/quizPlayArea";
+
+  static const String selectWordAnimation = "/selectWordAnimation";
+
+  static const String mapImageAnimation = "/mapImageAnimation";
+
+  static const String tapAnimation = "/tapAnimation";
+
+  static const String collidingCircles = "/collidingCircles";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -141,6 +153,21 @@ class Routes {
 
       case quiaPlayArea:
         return CupertinoPageRoute(builder: (context) => QuizPlayAreaScreen());
+
+      case selectWordAnimation:
+        return CupertinoPageRoute(
+            builder: (context) => SelectWordAnimationScreen());
+
+      case mapImageAnimation:
+        return CupertinoPageRoute(
+            builder: (context) => MapImageAnimationScreen());
+
+      case tapAnimation:
+        return CupertinoPageRoute(builder: (context) => TapAnimationScreen());
+
+      case collidingCircles:
+        return CupertinoPageRoute(
+            builder: (context) => CollidingCirclesAnimationScreen());
 
       default:
         return CupertinoPageRoute(

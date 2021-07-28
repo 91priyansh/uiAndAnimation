@@ -36,7 +36,11 @@ class _HomeScreenState extends State<HomeScreen> {
     "LoadingShapeAnimation",
     "AnimatedExpandableMenu",
     "CarRentalUx",
-    "QuizPlayArea"
+    "QuizPlayArea",
+    "SelectWordAnimation",
+    "MapImageAnimation",
+    "TapAnimation",
+    "Colliding Circles"
   ];
   @override
   Widget build(BuildContext context) {
@@ -100,6 +104,14 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.carRentalUx);
               } else if (examples[index] == "QuizPlayArea") {
                 Navigator.of(context).pushNamed(Routes.quiaPlayArea);
+              } else if (examples[index] == "SelectWordAnimation") {
+                Navigator.of(context).pushNamed(Routes.selectWordAnimation);
+              } else if (examples[index] == "MapImageAnimation") {
+                Navigator.of(context).pushNamed(Routes.mapImageAnimation);
+              } else if (examples[index] == "TapAnimation") {
+                Navigator.of(context).pushNamed(Routes.tapAnimation);
+              } else if (examples[index] == "Colliding Circles") {
+                Navigator.of(context).pushNamed(Routes.collidingCircles);
               }
             },
             title: Text(examples[index]),
