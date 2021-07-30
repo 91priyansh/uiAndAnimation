@@ -40,7 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
     "SelectWordAnimation",
     "MapImageAnimation",
     "TapAnimation",
-    "Colliding Circles"
+    "Colliding Circles",
+    "Correct Option Answer"
   ];
   @override
   Widget build(BuildContext context) {
@@ -112,6 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.tapAnimation);
               } else if (examples[index] == "Colliding Circles") {
                 Navigator.of(context).pushNamed(Routes.collidingCircles);
+              } else if (examples[index] == "Correct Option Answer") {
+                Navigator.of(context).pushNamed(Routes.correctOptionAnswer);
               }
             },
             title: Text(examples[index]),

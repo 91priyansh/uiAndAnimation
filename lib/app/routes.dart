@@ -6,6 +6,7 @@ import 'package:ui_animations/ui/screens/carRentalUx.dart';
 import 'package:ui_animations/ui/screens/chessAnimation.dart';
 import 'package:ui_animations/ui/screens/clipperScreen.dart';
 import 'package:ui_animations/ui/screens/contactAnimationScreen.dart';
+import 'package:ui_animations/ui/screens/correctOptionAnswerScreen.dart';
 import 'package:ui_animations/ui/screens/curvesScreen.dart';
 import 'package:ui_animations/ui/screens/customPainerScreen.dart';
 import 'package:ui_animations/ui/screens/gridViewsScreen.dart';
@@ -83,6 +84,7 @@ class Routes {
   static const String tapAnimation = "/tapAnimation";
 
   static const String collidingCircles = "/collidingCircles";
+  static const String correctOptionAnswer = "/correctOptionAnswers";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -168,6 +170,9 @@ class Routes {
       case collidingCircles:
         return CupertinoPageRoute(
             builder: (context) => CollidingCirclesAnimationScreen());
+
+      case correctOptionAnswer:
+        return CupertinoPageRoute(builder: (context) => CorrectOptionAnswer());
 
       default:
         return CupertinoPageRoute(
