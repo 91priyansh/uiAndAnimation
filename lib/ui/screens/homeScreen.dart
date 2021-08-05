@@ -41,7 +41,9 @@ class _HomeScreenState extends State<HomeScreen> {
     "MapImageAnimation",
     "TapAnimation",
     "Colliding Circles",
-    "Correct Option Answer"
+    "Correct Option Answer",
+    "Blur Hash Image",
+    "Read Along Text"
   ];
   @override
   Widget build(BuildContext context) {
@@ -115,6 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.collidingCircles);
               } else if (examples[index] == "Correct Option Answer") {
                 Navigator.of(context).pushNamed(Routes.correctOptionAnswer);
+              } else if (examples[index] == "Blur Hash Image") {
+                Navigator.of(context).pushNamed(Routes.blurHashImage);
+              } else if (examples[index] == "Read Along Text") {
+                Navigator.of(context).pushNamed(Routes.readAlongText);
               }
             },
             title: Text(examples[index]),

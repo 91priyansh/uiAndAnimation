@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ui_animations/ui/screens/CollidingCirclesAnimationScreen.dart';
 import 'package:ui_animations/ui/screens/animatedExpandableMenu.dart';
+import 'package:ui_animations/ui/screens/blurHashImageScreen.dart';
 import 'package:ui_animations/ui/screens/carRentalUx.dart';
 import 'package:ui_animations/ui/screens/chessAnimation.dart';
 import 'package:ui_animations/ui/screens/clipperScreen.dart';
@@ -24,6 +25,7 @@ import 'package:ui_animations/ui/screens/numberAnimation.dart';
 import 'package:ui_animations/ui/screens/overlayScreen.dart';
 import 'package:ui_animations/ui/screens/pageViewSideMenuScreen.dart';
 import 'package:ui_animations/ui/screens/quizPlayAreaScreen.dart';
+import 'package:ui_animations/ui/screens/readAlongTextScreen.dart';
 import 'package:ui_animations/ui/screens/scrollAnimation.dart';
 import 'package:ui_animations/ui/screens/selectProfilePictureScreen.dart';
 import 'package:ui_animations/ui/screens/selectWordAnimation.dart';
@@ -85,6 +87,9 @@ class Routes {
 
   static const String collidingCircles = "/collidingCircles";
   static const String correctOptionAnswer = "/correctOptionAnswers";
+
+  static const String blurHashImage = "/blurHashImage";
+  static const String readAlongText = "/readAlongText";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -173,6 +178,12 @@ class Routes {
 
       case correctOptionAnswer:
         return CupertinoPageRoute(builder: (context) => CorrectOptionAnswer());
+
+      case blurHashImage:
+        return CupertinoPageRoute(builder: (context) => BlurHashImageScreen());
+
+      case readAlongText:
+        return CupertinoPageRoute(builder: (context) => ReadAlongTextScreen());
 
       default:
         return CupertinoPageRoute(
