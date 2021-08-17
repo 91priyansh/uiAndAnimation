@@ -43,7 +43,9 @@ class _HomeScreenState extends State<HomeScreen> {
     "Colliding Circles",
     "Correct Option Answer",
     "Blur Hash Image",
-    "Read Along Text"
+    "Read Along Text",
+    "RTL Layout",
+    "ScrollImageslider"
   ];
   @override
   Widget build(BuildContext context) {
@@ -121,6 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.of(context).pushNamed(Routes.blurHashImage);
               } else if (examples[index] == "Read Along Text") {
                 Navigator.of(context).pushNamed(Routes.readAlongText);
+              } else if (examples[index] == "RTL Layout") {
+                Navigator.of(context).pushNamed(Routes.rtlLayout);
+              } //
+              else if (examples[index] == "ScrollImageslider") {
+                Navigator.of(context).pushNamed(Routes.scrollImageSlider,
+                    arguments: MediaQuery.of(context).size);
               }
             },
             title: Text(examples[index]),

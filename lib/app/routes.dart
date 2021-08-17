@@ -26,7 +26,9 @@ import 'package:ui_animations/ui/screens/overlayScreen.dart';
 import 'package:ui_animations/ui/screens/pageViewSideMenuScreen.dart';
 import 'package:ui_animations/ui/screens/quizPlayAreaScreen.dart';
 import 'package:ui_animations/ui/screens/readAlongTextScreen.dart';
+import 'package:ui_animations/ui/screens/rtlLayoutScreen.dart';
 import 'package:ui_animations/ui/screens/scrollAnimation.dart';
+import 'package:ui_animations/ui/screens/scroolImageSliderScreen.dart';
 import 'package:ui_animations/ui/screens/selectProfilePictureScreen.dart';
 import 'package:ui_animations/ui/screens/selectWordAnimation.dart';
 import 'package:ui_animations/ui/screens/slivers/sliverAppbarScreen.dart';
@@ -90,6 +92,8 @@ class Routes {
 
   static const String blurHashImage = "/blurHashImage";
   static const String readAlongText = "/readAlongText";
+  static const String rtlLayout = "/rtlLayout";
+  static const String scrollImageSlider = "/scrollImageSlider";
 
   static Route<dynamic> onGenerateRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
@@ -184,6 +188,12 @@ class Routes {
 
       case readAlongText:
         return CupertinoPageRoute(builder: (context) => ReadAlongTextScreen());
+
+      case rtlLayout:
+        return CupertinoPageRoute(builder: (context) => RtlLayoutScreen());
+
+      case scrollImageSlider:
+        return ScrollImagesliderScreen.route(routeSettings);
 
       default:
         return CupertinoPageRoute(
