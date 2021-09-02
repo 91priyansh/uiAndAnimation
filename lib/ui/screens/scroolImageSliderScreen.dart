@@ -17,9 +17,22 @@ class ScrollImagesliderScreen extends StatefulWidget {
   }
 }
 
-class _ScrollImagesliderScreenState extends State<ScrollImagesliderScreen> {
+class _ScrollImagesliderScreenState extends State<ScrollImagesliderScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController animationController =
+      AnimationController(vsync: this, duration: Duration(seconds: 25));
+
   late ScrollController scrollController =
       ScrollController(initialScrollOffset: widget.screenSize.width * 1.5);
+  late String text =
+      "In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available";
+  late TextSpan textSpan = TextSpan(
+      text: text,
+      style: TextStyle(
+        fontSize: 18,
+        color: Colors.redAccent,
+        height: 1.05,
+      ));
 
   @override
   void dispose() {
@@ -29,13 +42,47 @@ class _ScrollImagesliderScreenState extends State<ScrollImagesliderScreen> {
 
   @override
   void initState() {
+    animationController.forward();
     super.initState();
+  }
+
+  Widget _buildOptionText() {
+    TextPainter textPainter = TextPainter(
+      text: textSpan,
+      maxLines: 3,
+      textDirection: Directionality.of(context),
+    );
+    textPainter.layout(
+      maxWidth: MediaQuery.of(context).size.width * (0.8),
+    );
+
+    print(textPainter.didExceedMaxLines);
+
+    return Container(
+      width: MediaQuery.of(context).size.width * (0.8),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+              onPressed: () {
+                print(animationController.value);
+                animationController.forward(from: animationController.value);
+              },
+              icon: Icon(Icons.star))
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          animationController.stop();
+        },
+      ),
+      body: _buildOptionText(),
+      /*
       body: SingleChildScrollView(
         controller: scrollController,
         scrollDirection: Axis.horizontal,
@@ -60,8 +107,9 @@ class _ScrollImagesliderScreenState extends State<ScrollImagesliderScreen> {
           ],
         ),
       ),
-      /*
-      body: PageView(
+      */
+
+      /*body: PageView(
         children: [
           PageViewChildContainer(
             image: "assets/lion.jpg",

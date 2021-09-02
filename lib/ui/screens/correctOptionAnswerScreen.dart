@@ -13,11 +13,20 @@ class CorrectOptionAnswer extends StatelessWidget {
           SizedBox(
             height: MediaQuery.of(context).size.height * (0.1),
           ),
-          Center(child: OptionContainer()),
+          Center(
+              child: OptionContainer(
+            text:
+                "In publishing and graphic design,  In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available,used as a placeholder before final copy is available,used as a placeholder before final copy is available,used as a placeholder before final copy is available,used as a placeholder before final copy is available,",
+          )),
           SizedBox(
             height: MediaQuery.of(context).size.height * (0.1),
           ),
-          Center(child: FindOpponentLetterAnimation()),
+          Center(
+            child: OptionContainer(
+                text:
+                    "In publishing and graphic design,  In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document or a typeface without relying on meaningful content. Lorem ipsum may be used as a placeholder before final copy is available,used as a placeholder before final copy is available,used as a placeholder before final cop"),
+          )
+          //Center(child: FindOpponentLetterAnimation()),
         ],
       ),
     );
@@ -101,7 +110,8 @@ class _FindOpponentLetterAnimationState
 }
 
 class OptionContainer extends StatefulWidget {
-  OptionContainer({Key? key}) : super(key: key);
+  final String text;
+  OptionContainer({Key? key, required this.text}) : super(key: key);
 
   @override
   _OptionContainerState createState() => _OptionContainerState();
@@ -133,11 +143,113 @@ class _OptionContainerState extends State<OptionContainer>
           parent: topContainerAnimationController,
           curve: Interval(0.5, 1.0, curve: Curves.easeInQuad)));
 
+  late double heightPercentage = 0.09;
+
+  late TextSpan textSpan = TextSpan(
+      text: widget.text,
+      style: TextStyle(
+        fontSize: 18,
+        color: Colors.white,
+        height: 1.05,
+      ));
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   void dispose() {
     animationController.dispose();
     topContainerAnimationController.dispose();
     super.dispose();
+  }
+
+  int calculateMaxLines() {
+    TextPainter textPainter =
+        TextPainter(text: textSpan, textDirection: Directionality.of(context));
+
+    textPainter.layout(
+      maxWidth: MediaQuery.of(context).size.width * (0.8),
+    );
+
+    print(textPainter.computeLineMetrics().length);
+
+    return textPainter.computeLineMetrics().length;
+  }
+
+  Widget _buildOption() {
+    int maxLines = calculateMaxLines();
+    heightPercentage = maxLines > 2
+        ? (heightPercentage + (0.025 * (maxLines - 2)))
+        : heightPercentage;
+    print(maxLines);
+    return AnimatedBuilder(
+      animation: animationController,
+      builder: (context, child) {
+        return Transform.scale(
+          scale: animation.drive(Tween<double>(begin: 1.0, end: 0.9)).value,
+          child: child,
+        );
+      },
+      child: Container(
+        width: MediaQuery.of(context).size.width * (0.8),
+        height: MediaQuery.of(context).size.height * (heightPercentage),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(25.0),
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: maxLines > 2 ? 7.5 : 0.0),
+                color: Colors.lightBlueAccent,
+                alignment: Alignment.centerLeft,
+                child: RichText(text: textSpan),
+              ),
+              IgnorePointer(
+                ignoring: true,
+                child: AnimatedBuilder(
+                  builder: (context, child) {
+                    final height = topContainerAnimation
+                        .drive(
+                            Tween<double>(begin: 0.07, end: heightPercentage))
+                        .value;
+                    final width = topContainerAnimation
+                        .drive(Tween<double>(begin: 0.2, end: 0.8))
+                        .value;
+
+                    final borderRadius = topContainerAnimation
+                        .drive(Tween<double>(begin: 45.0, end: 25))
+                        .value;
+
+                    return Opacity(
+                      opacity: topContainerOpacityAnimation.value,
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Transform.scale(
+                          scale: answerCorrectnessAnimation.value,
+                          child: Opacity(
+                            opacity: answerCorrectnessAnimation.value,
+                            child: Icon(Icons.check, color: Colors.white),
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Colors.redAccent,
+                            borderRadius: BorderRadius.circular(borderRadius)),
+                        width: MediaQuery.of(context).size.width * width,
+                        height: MediaQuery.of(context).size.height * height,
+                      ),
+                    );
+                  },
+                  animation: topContainerAnimationController,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -153,75 +265,14 @@ class _OptionContainerState extends State<OptionContainer>
       onTapDown: (_) {
         animationController.forward();
       },
-      child: AnimatedBuilder(
-        animation: animationController,
-        builder: (context, child) {
-          return Transform.scale(
-            scale: animation.drive(Tween<double>(begin: 1.0, end: 0.9)).value,
-            child: child,
-          );
-        },
-        child: Container(
-          width: MediaQuery.of(context).size.width * (0.8),
-          height: MediaQuery.of(context).size.height * (0.075),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(25.0),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Container(
-                  padding: EdgeInsets.only(left: 20.0),
-                  color: Colors.lightBlueAccent,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    "Some Text",
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-                IgnorePointer(
-                  ignoring: true,
-                  child: AnimatedBuilder(
-                    builder: (context, child) {
-                      final height = topContainerAnimation
-                          .drive(Tween<double>(begin: 0.07, end: 0.075))
-                          .value;
-                      final width = topContainerAnimation
-                          .drive(Tween<double>(begin: 0.2, end: 0.8))
-                          .value;
-
-                      final borderRadius = topContainerAnimation
-                          .drive(Tween<double>(begin: 45.0, end: 25))
-                          .value;
-
-                      return Opacity(
-                        opacity: topContainerOpacityAnimation.value,
-                        child: Container(
-                          alignment: Alignment.center,
-                          child: Transform.scale(
-                            scale: answerCorrectnessAnimation.value,
-                            child: Opacity(
-                              opacity: answerCorrectnessAnimation.value,
-                              child: Icon(Icons.check, color: Colors.white),
-                            ),
-                          ),
-                          decoration: BoxDecoration(
-                              color: Colors.redAccent,
-                              borderRadius:
-                                  BorderRadius.circular(borderRadius)),
-                          width: MediaQuery.of(context).size.width * width,
-                          height: MediaQuery.of(context).size.height * height,
-                        ),
-                      );
-                    },
-                    animation: topContainerAnimationController,
-                  ),
-                )
-              ],
-            ),
+      child: Column(
+        children: [
+          _buildOption(),
+          SizedBox(
+            height: 25.0,
           ),
-        ),
+          //_buildOption(),
+        ],
       ),
     );
   }
